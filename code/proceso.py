@@ -29,3 +29,10 @@ valid = txt[-5:]
 train = [w for s in train for w in s if not w.isspace()]
 valid = [w for s in valid for w in s if not w.isspace()]
 
+# STEP 1.3
+
+"""
+    How big is our dataset?
+"""
+print("Our training dataset contains {} lexical types".format(len(set(train))))
+print("Our training dataset contains {} lexical tokens".format(len(train)))
