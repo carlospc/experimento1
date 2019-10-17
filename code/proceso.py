@@ -13,7 +13,7 @@ print("y {} tipos léxicos".format(len(everything)))
 
 # 1. Import the tokenizer
 import spacy
-nlp = spacy.load("es", disable=["parser","tagger","ner","textcat"])
+nlp = spacy.load("es_core_news_sm", disable=["parser","tagger","ner","textcat"])
 
 # 2. Tokenize
 txt = [nlp(s) for s in txt]
