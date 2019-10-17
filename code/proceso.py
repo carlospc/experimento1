@@ -36,3 +36,40 @@ valid = [w for s in valid for w in s if not w.isspace()]
 """
 print("Our training dataset contains {} lexical types".format(len(set(train))))
 print("Our training dataset contains {} lexical tokens".format(len(train)))
+
+# STEP 1.4
+
+# 1. Count the frequencies of every word
+from collections import Counter, defaultdict
+counts = Counter(train)
+
+frequencies = [0]*8
+for w in counts:
+  if counts[w] >= 128:
+    frequencies[0] += 1
+  elif counts[w] >= 64:
+    frequencies[1] += 1
+  elif counts[w] >= 32:
+    frequencies[2] += 1
+  elif counts[w] >= 16:
+    frequencies[3] += 1
+  elif counts[w] >= 8:
+    frequencies[4] += 1
+  elif counts[w] >= 4:
+    frequencies[5] += 1
+  elif counts[w] >= 2:
+    frequencies[6] += 1
+  else:
+    frequencies[7] += 1
+
+
+# 2. Plot their distributions
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+f,a = plt.subplots(1,1,figsize=(10,5))
+a.set(xlabel='Lexical types occuring more then n times', 
+      ylabel='Number of lexical types')
+
+labels = [128, 64, 32, 16, 8, 4, 2, 1]
+_ = sns.barplot(labels, frequencies, ax=a, order=labels)
